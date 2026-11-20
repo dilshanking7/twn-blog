@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Daily blog article generator (cloud). Gemini se human-like article likhta hai."""
+"""Daily blog article generator (cloud). Gemini ya keyless Pollinations se likhta hai."""
 import json, os, re, sys, urllib.request, urllib.error
 from datetime import datetime, timezone, timedelta
 
@@ -31,8 +31,9 @@ def load_topics():
     return topics
 
 
-def gemini(prompt, key):
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + key
+def gen_gemini(prompt, key):
+    url = ("https://generativelanguage.googleapis.com/v1beta/models/"
+           "gemini-2.0-flash:generateContent?key=" + key)
     body = json.dumps({
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {"temperature": 0.9, "maxOutputTokens": 4096},
@@ -43,20 +44,40 @@ def gemini(prompt, key):
     return data["candidates"][0]["content"]["parts"][0]["text"]
 
 
-def main():
-    key = os.environ.get("GEMINI_API_KEY", "")
-    if not key:
-        print("GEMINI_API_KEY nahi mili — article generate nahi hua.")
-        sys.exit(1)
+def gen_pollinations(prompt):
+    url = "https://text.pollinations.ai/"
+    body = json.dumps({
+        "messages": [{"role": "user", "content": prompt}],
+        "model": "openai",
+        "temperature": 0.9,
+    }).encode()
+    req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=180) as r:
+        return r.read().decode()
 
+
+def generate(prompt):
+    key = os.environ.get("GEMINI_API_KEY", "")
+    if key:
+        try:
+            return gen_gemini(prompt, key), "gemini"
+        except Exception as e:
+            print("Gemini fail, Pollinations pe ja raha hoon:", e)
+    return gen_pollinations(prompt), "pollinations"
+
+
+def main():
     state = load_state()
     topics = load_topics()
-    idx = state.get("next_index", 0)
-    if idx >= len(topics):
-        idx = 0
+    if not topics:
+        print("topics.md me koi topic nahi mila.")
+        sys.exit(1)
+    idx = state.get("next_index", 0) % len(topics)
     num, topic = topics[idx]
 
-    lang_code = state.get("language_cycle", ["en"])[state.get("language_pos", 0) % len(state.get("language_cycle", ["en"]))]
+    cyc = state.get("language_cycle", ["en"])
+    pos = state.get("language_pos", 0)
+    lang_code = cyc[pos % len(cyc)]
     lang = LANGS.get(lang_code, "English")
 
     prompt = f"""You are writing a blog post for "dilshanking7", a blog by Dilshan, a student and developer from Dhanbad, India.
@@ -70,25 +91,27 @@ Rules:
 - 500-800 words. Short paragraphs.
 - Start with a real sentence, not a question or a generic intro.
 - Use first person where natural.
-- Output ONLY the article body paragraphs, separated by a blank line. No title, no meta, no bullet points unless the topic needs a list.
+- Output ONLY the article body paragraphs, separated by a blank line. No title, no meta.
 
 Article:"""
 
-    article = gemini(prompt, key).strip()
+    article, provider = generate(prompt)
+    article = article.strip()
+
     today = datetime.now(IST).strftime("%Y-%m-%d")
     slug = re.sub(r"[^a-z0-9]+", "-", topic.lower())[:50].strip("-")
     os.makedirs(POSTS, exist_ok=True)
     path = os.path.join(POSTS, f"{today}-{slug}.md")
     with open(path, "w") as f:
         f.write(f"# {topic}\n\n")
-        f.write(f"Language: {lang} | Date: {today}\n\n")
+        f.write(f"Language: {lang} | Date: {today} | Provider: {provider}\n\n")
         f.write(article + "\n")
 
     state["next_index"] = idx + 1
-    state["language_pos"] = state.get("language_pos", 0) + 1
+    state["language_pos"] = pos + 1
     state.setdefault("posted", []).append({
         "date": today, "topic_index": idx, "language": lang_code,
-        "title": topic, "file": os.path.relpath(path, ROOT),
+        "title": topic, "file": os.path.relpath(path, ROOT), "provider": provider,
     })
     with open(STATE, "w") as f:
         json.dump(state, f, indent=2, ensure_ascii=False)
@@ -96,6 +119,7 @@ Article:"""
     print(f"POST_FILE={os.path.relpath(path, ROOT)}")
     print(f"TOPIC={topic}")
     print(f"LANG={lang_code}")
+    print(f"PROVIDER={provider}")
     print("----ARTICLE----")
     print(article)
 
