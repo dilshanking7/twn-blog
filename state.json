@@ -1,6 +1,22 @@
 {
-  "next_index": 0,
-  "language_cycle": ["en", "en", "hi", "en", "en", "hinglish"],
-  "language_pos": 0,
-  "posted": []
+  "next_index": 1,
+  "language_cycle": [
+    "en",
+    "en",
+    "hi",
+    "en",
+    "en",
+    "hinglish"
+  ],
+  "language_pos": 1,
+  "posted": [
+    {
+      "date": "2026-11-20",
+      "topic_index": 0,
+      "language": "en",
+      "title": "Free AI tools jo abhi sabse zyada use ho rahe hain (2026)",
+      "file": "posts/2026-11-20-free-ai-tools-jo-abhi-sabse-zyada-use-ho-rahe-hain.md",
+      "provider": "pollinations"
+    }
+  ]
 }
