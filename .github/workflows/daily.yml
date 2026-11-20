@@ -1,0 +1,49 @@
+name: Daily blog auto-post
+
+on:
+  schedule:
+    - cron: "30 2 * * *"   # roz subah 8:00 baje India (IST)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: twn-blog-daily
+  cancel-in-progress: false
+
+jobs:
+  generate-and-post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate article (Gemini)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python3 scripts/generate.py
+
+      - name: Commit article
+        run: |
+          git config user.name "dilshanking7-bot"
+          git config user.email "indiasite13@gmail.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "Daily blog post"
+            git push
+          else
+            echo "No changes to commit"
+          fi
+
+      - name: Publish to platforms (agar tokens hain)
+        env:
+          MEDIUM_TOKEN: ${{ secrets.MEDIUM_TOKEN }}
+          DEV_API_KEY: ${{ secrets.DEV_API_KEY }}
+          HASHNODE_KEY: ${{ secrets.HASHNODE_KEY }}
+          HASHNODE_PUBLICATION_ID: ${{ secrets.HASHNODE_PUBLICATION_ID }}
+        run: python3 scripts/publish.py || echo "publish step skipped/failed"
