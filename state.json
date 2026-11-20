@@ -1,5 +1,5 @@
 {
-  "next_index": 4,
+  "next_index": 5,
   "language_cycle": [
     "en",
     "en",
@@ -8,7 +8,7 @@
     "en",
     "hinglish"
   ],
-  "language_pos": 4,
+  "language_pos": 5,
   "posted": [
     {
       "date": "2026-11-20",
@@ -40,6 +40,14 @@
       "language": "en",
       "title": "AI ke naye version aur kya badla hai",
       "file": "posts/2026-11-20-ai-ke-naye-version-aur-kya-badla-hai.md",
+      "provider": "pollinations"
+    },
+    {
+      "date": "2026-11-20",
+      "topic_index": 4,
+      "language": "en",
+      "title": "AI se paisa kamane ke real tarike (free tools se)",
+      "file": "posts/2026-11-20-ai-se-paisa-kamane-ke-real-tarike-free-tools-se.md",
       "provider": "pollinations"
     }
   ]
