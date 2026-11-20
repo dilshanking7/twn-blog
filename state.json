@@ -1,5 +1,5 @@
 {
-  "next_index": 5,
+  "next_index": 6,
   "language_cycle": [
     "en",
     "en",
@@ -8,7 +8,7 @@
     "en",
     "hinglish"
   ],
-  "language_pos": 5,
+  "language_pos": 6,
   "posted": [
     {
       "date": "2026-11-20",
@@ -49,6 +49,14 @@
       "title": "AI se paisa kamane ke real tarike (free tools se)",
       "file": "posts/2026-11-20-ai-se-paisa-kamane-ke-real-tarike-free-tools-se.md",
       "provider": "pollinations"
+    },
+    {
+      "date": "2026-11-20",
+      "topic_index": 5,
+      "language": "hinglish",
+      "title": "AI agents kya hote hain — beginner guide",
+      "file": "posts/2026-11-20-ai-agents-kya-hote-hain-beginner-guide.md",
+      "provider": "gemini"
     }
   ]
 }
