@@ -28,6 +28,13 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python3 scripts/generate.py
 
+      - name: Debug Gemini models
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          curl -s -m 30 "https://generativelanguage.googleapis.com/v1beta/models?key=$GEMINI_API_KEY" | head -c 600
+          echo
+
       - name: Commit article
         run: |
           git config user.name "dilshanking7-bot"

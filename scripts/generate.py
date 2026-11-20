@@ -31,17 +31,29 @@ def load_topics():
     return topics
 
 
+GEMINI_MODELS = ["gemini-2.0-flash", "gemini-2.0-flash-exp", "gemini-2.5-flash",
+                 "gemini-1.5-flash", "gemini-2.5-flash-lite"]
+
+
 def gen_gemini(prompt, key):
-    url = ("https://generativelanguage.googleapis.com/v1beta/models/"
-           "gemini-2.0-flash:generateContent?key=" + key)
     body = json.dumps({
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {"temperature": 0.9, "maxOutputTokens": 4096},
     }).encode()
-    req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=120) as r:
-        data = json.loads(r.read())
-    return data["candidates"][0]["content"]["parts"][0]["text"]
+    last = None
+    for model in GEMINI_MODELS:
+        url = ("https://generativelanguage.googleapis.com/v1beta/models/"
+               + model + ":generateContent?key=" + key)
+        req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                data = json.loads(r.read())
+            return data["candidates"][0]["content"]["parts"][0]["text"]
+        except Exception as e:
+            last = e
+    if last:
+        raise last
+    raise RuntimeError("gemini failed")
 
 
 def gen_pollinations(prompt):
