@@ -34,7 +34,7 @@ jobs:
         run: |
           curl -s -m 30 "https://generativelanguage.googleapis.com/v1beta/models?key=$GEMINI_API_KEY" | grep -o 'models/[a-z0-9.-]*' | head -20
           echo "--- generate test ---"
-          curl -s -m 30 -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=$GEMINI_API_KEY" -H "Content-Type: application/json" -d '{"contents":[{"parts":[{"text":"say hi"}]}]}' | head -c 400
+          curl -s -m 30 -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=$GEMINI_API_KEY" -H "Content-Type: application/json" -d '{"contents":[{"parts":[{"text":"say hi"}]}]}' | head -c 400
           echo
 
       - name: Commit article
