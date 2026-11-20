@@ -1,5 +1,5 @@
 {
-  "next_index": 1,
+  "next_index": 2,
   "language_cycle": [
     "en",
     "en",
@@ -8,7 +8,7 @@
     "en",
     "hinglish"
   ],
-  "language_pos": 1,
+  "language_pos": 2,
   "posted": [
     {
       "date": "2026-11-20",
@@ -16,6 +16,14 @@
       "language": "en",
       "title": "Free AI tools jo abhi sabse zyada use ho rahe hain (2026)",
       "file": "posts/2026-11-20-free-ai-tools-jo-abhi-sabse-zyada-use-ho-rahe-hain.md",
+      "provider": "pollinations"
+    },
+    {
+      "date": "2026-11-20",
+      "topic_index": 1,
+      "language": "en",
+      "title": "Is hafte AI me kya launch hua — poore launches ki list",
+      "file": "posts/2026-11-20-is-hafte-ai-me-kya-launch-hua-poore-launches-ki-li.md",
       "provider": "pollinations"
     }
   ]
