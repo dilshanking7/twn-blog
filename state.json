@@ -1,5 +1,5 @@
 {
-  "next_index": 6,
+  "next_index": 7,
   "language_cycle": [
     "en",
     "en",
@@ -8,7 +8,7 @@
     "en",
     "hinglish"
   ],
-  "language_pos": 6,
+  "language_pos": 7,
   "posted": [
     {
       "date": "2026-11-20",
@@ -56,6 +56,14 @@
       "language": "hinglish",
       "title": "AI agents kya hote hain — beginner guide",
       "file": "posts/2026-11-20-ai-agents-kya-hote-hain-beginner-guide.md",
+      "provider": "gemini"
+    },
+    {
+      "date": "2026-11-21",
+      "topic_index": 6,
+      "language": "en",
+      "title": "Duniya me abhi kya ho raha hai — tech edition",
+      "file": "posts/2026-11-21-duniya-me-abhi-kya-ho-raha-hai-tech-edition.md",
       "provider": "gemini"
     }
   ]
