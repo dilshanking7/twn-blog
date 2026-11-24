@@ -1,5 +1,5 @@
 {
-  "next_index": 9,
+  "next_index": 10,
   "language_cycle": [
     "en",
     "en",
@@ -8,7 +8,7 @@
     "en",
     "hinglish"
   ],
-  "language_pos": 9,
+  "language_pos": 10,
   "posted": [
     {
       "date": "2026-11-20",
@@ -81,6 +81,14 @@
       "title": "Kon kon ne kya bana liya — developers ke naye projects",
       "file": "posts/2026-11-23-kon-kon-ne-kya-bana-liya-developers-ke-naye-projec.md",
       "provider": "pollinations"
+    },
+    {
+      "date": "2026-11-24",
+      "topic_index": 9,
+      "language": "en",
+      "title": "Mobile/AI gadgets ki nayi news",
+      "file": "posts/2026-11-24-mobile-ai-gadgets-ki-nayi-news.md",
+      "provider": "gemini"
     }
   ]
 }
