@@ -1,5 +1,5 @@
 {
-  "next_index": 10,
+  "next_index": 11,
   "language_cycle": [
     "en",
     "en",
@@ -8,7 +8,7 @@
     "en",
     "hinglish"
   ],
-  "language_pos": 10,
+  "language_pos": 11,
   "posted": [
     {
       "date": "2026-11-20",
@@ -88,6 +88,14 @@
       "language": "en",
       "title": "Mobile/AI gadgets ki nayi news",
       "file": "posts/2026-11-24-mobile-ai-gadgets-ki-nayi-news.md",
+      "provider": "gemini"
+    },
+    {
+      "date": "2026-11-25",
+      "topic_index": 10,
+      "language": "en",
+      "title": "Startup kya hai — simple words me",
+      "file": "posts/2026-11-25-startup-kya-hai-simple-words-me.md",
       "provider": "gemini"
     }
   ]
