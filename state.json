@@ -1,5 +1,5 @@
 {
-  "next_index": 11,
+  "next_index": 12,
   "language_cycle": [
     "en",
     "en",
@@ -8,7 +8,7 @@
     "en",
     "hinglish"
   ],
-  "language_pos": 11,
+  "language_pos": 12,
   "posted": [
     {
       "date": "2026-11-20",
@@ -97,6 +97,14 @@
       "title": "Startup kya hai — simple words me",
       "file": "posts/2026-11-25-startup-kya-hai-simple-words-me.md",
       "provider": "gemini"
+    },
+    {
+      "date": "2026-11-26",
+      "topic_index": 11,
+      "language": "hinglish",
+      "title": "Startup kaise start kare — step by step",
+      "file": "posts/2026-11-26-startup-kaise-start-kare-step-by-step.md",
+      "provider": "pollinations"
     }
   ]
 }
