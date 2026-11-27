@@ -1,5 +1,5 @@
 {
-  "next_index": 12,
+  "next_index": 13,
   "language_cycle": [
     "en",
     "en",
@@ -8,7 +8,7 @@
     "en",
     "hinglish"
   ],
-  "language_pos": 12,
+  "language_pos": 13,
   "posted": [
     {
       "date": "2026-11-20",
@@ -104,6 +104,14 @@
       "language": "hinglish",
       "title": "Startup kaise start kare — step by step",
       "file": "posts/2026-11-26-startup-kaise-start-kare-step-by-step.md",
+      "provider": "pollinations"
+    },
+    {
+      "date": "2026-11-27",
+      "topic_index": 12,
+      "language": "en",
+      "title": "Student ke liye startup ideas",
+      "file": "posts/2026-11-27-student-ke-liye-startup-ideas.md",
       "provider": "pollinations"
     }
   ]
