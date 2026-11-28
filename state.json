@@ -1,5 +1,5 @@
 {
-  "next_index": 13,
+  "next_index": 14,
   "language_cycle": [
     "en",
     "en",
@@ -8,7 +8,7 @@
     "en",
     "hinglish"
   ],
-  "language_pos": 13,
+  "language_pos": 14,
   "posted": [
     {
       "date": "2026-11-20",
@@ -113,6 +113,14 @@
       "title": "Student ke liye startup ideas",
       "file": "posts/2026-11-27-student-ke-liye-startup-ideas.md",
       "provider": "pollinations"
+    },
+    {
+      "date": "2026-11-28",
+      "topic_index": 13,
+      "language": "en",
+      "title": "Free tools se startup kaise boot kare",
+      "file": "posts/2026-11-28-free-tools-se-startup-kaise-boot-kare.md",
+      "provider": "gemini"
     }
   ]
 }
